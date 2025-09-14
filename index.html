@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purple Hearts - BTS Army Channel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #c79bd8;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c79bd8;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23667eea;stop-opacity:1" /><stop offset="100%" style="stop-color:%23764ba2;stop-opacity:1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23grad1)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #c79bd8, #a855f7);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #c79bd8;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #c79bd8;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #c79bd8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        .heart {
+            color: #c79bd8;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Purple Hearts <span class="heart">💜</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Purple Hearts <span class="heart">💜</span></h1>
+                <p>Your Ultimate BTS Army Destination</p>
+                <p>Join our community of passionate ARMYs for exclusive content, reactions, and BTS updates!</p>
+                <a href="https://youtube.com/@purplehearts-ho5vj" target="_blank" class="btn">Watch Our YouTube Channel</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">About Purple Hearts</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Welcome to Purple Hearts! 💜</h3>
+                <p>We are dedicated BTS ARMYs creating content that celebrates our love for Bangtan Sonyeondan. Visit our <a href="https://youtube.com/@purplehearts-ho5vj" target="_blank" style="color: #c79bd8; text-decoration: underline;">YouTube Channel</a> for amazing content featuring:</p>
+                <ul style="margin: 1rem 0; padding-left: 2rem;">
+                    <li>BTS Music Video Reactions & Analysis</li>
+                    <li>Album Reviews & Track Discussions</li>
+                    <li>Latest BTS News & Updates</li>
+                    <li>ARMY Community Interactions</li>
+                    <li>Concert & Performance Reviews</li>
+                    <li>BTS Member Individual Content</li>
+                </ul>
+                <p><strong>Subscribe to our channel:</strong> <a href="https://youtube.com/@purplehearts-ho5vj" target="_blank" style="color: #c79bd8; text-decoration: underline;">@purplehearts-ho5vj</a></p>
+            </div>
+            <div class="about-text">
+                <h3>Our Mission 🎵</h3>
+                <p>To create a positive space for all ARMYs to come together, share their love for BTS, and enjoy quality content that celebrates the artistry and message of our beloved seven members.</p>
+                <br>
+                <h3>Why Purple Hearts? 💜</h3>
+                <p>Purple represents the last color of the rainbow and means "I will trust and love you for a long time" - just like V said! Our hearts beat purple for BTS and ARMY.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="container">
+        <h2 class="section-title">Our Latest Videos</h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <h3>Latest BTS Reactions 🎬</h3>
+                <p>Watch our genuine reactions to BTS's newest music videos with detailed analysis and ARMY theories! Subscribe for daily BTS content.</p>
+                <a href="https://youtube.com/@purplehearts-ho5vj" target="_blank" class="btn" style="margin-top: 1rem;">Visit Channel</a>
+            </div>
+            <div class="video-card">
+                <h3>BTS Album Deep Dives 📀</h3>
+                <p>Complete track-by-track reviews of BTS albums with lyrics analysis and musical appreciation. Perfect for fellow ARMYs!</p>
+                <a href="https://youtube.com/@purplehearts-ho5vj" target="_blank" class="btn" style="margin-top: 1rem;">Subscribe Now</a>
+            </div>
+            <div class="video-card">
+                <h3>BTS News & Updates 📰</h3>
+                <p>Stay updated with the latest BTS news, achievements, and upcoming projects! Never miss any Bangtan updates.</p>
+                <a href="https://youtube.com/@purplehearts-ho5vj" target="_blank" class="btn" style="margin-top: 1rem;">Watch Latest</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Share your thoughts, video requests, or just say hi!" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message 💜</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://youtube.com/@purplehearts-ho5vj" target="_blank" title="YouTube Channel">📺</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="TikTok">🎵</a>
+            </div>
+            <p>&copy; 2024 Purple Hearts - Official Website</p>
+            <p>YouTube Channel: <a href="https://youtube.com/@purplehearts-ho5vj" target="_blank" style="color: #c79bd8;">@purplehearts-ho5vj</a></p>
+            <p>This is a fan-made website dedicated to BTS content creation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon 💜');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
